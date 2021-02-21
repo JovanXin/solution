@@ -9,14 +9,14 @@ Wanted to optimize:
 2) How can I store them as ints directly from input? Eg. line 34 
 """
 
-# people_teas = {
-#     "G": 0,
-#     "C": 0,
-#     "E": 0,
-#     "P": 0,
-#     "L": 0,
-#     "S": 0
-# }
+people_teas = {
+    "G": 0,
+    "C": 0,
+    "E": 0,
+    "P": 0,
+    "L": 0,
+    "S": 0
+}
 
 people = {}
 
@@ -44,17 +44,20 @@ for j in range(regular_people):
 
 hosts = []
 
+for person in people.values():
+    people_teas[person["fav_tea"]] += 1
+
 for y in range(potential_hosts):
     host_name = input()
     unsatisfied = 0
     
     person_stats = people[host_name]["teas"]
 
-    for person in people.values():
-        if person_stats[person["fav_tea"]] < 1:
-            unsatisfied += 1
-        elif person_stats[person["fav_tea"]] >= 1:
-            person_stats[person["fav_tea"]] -= 1
+
+    for people_tea_val, host_tea_val in zip(people_teas.values(), person_stats.values()):
+        if people_tea_val > host_tea_val:
+            unsatisfied += (people_tea_val - host_tea_val)
+    
 
     if unsatisfied == 0:
         print(f"{host_name} Successful")
