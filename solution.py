@@ -6,7 +6,8 @@
 
 Wanted to optimize:
 1) Only store data for number of teas if person was not a potential host -> could not do this as they gave hosts at the end? 
-2) How can I store them as ints directly from input? Eg. line 34
+2) How can I store them as ints directly from input? Eg. line 34 
+"""
 
 # people_teas = {
 #     "G": 0,
